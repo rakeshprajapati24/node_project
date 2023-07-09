@@ -3,7 +3,8 @@ var mongoose=require('mongoose');
 var newSchema = mongoose.Schema({
     name:String,
     email:String,
-    password:String
+    password:String,
+    image:String,
 
 });
 

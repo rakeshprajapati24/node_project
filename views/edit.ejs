@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <form method="post" action="/update/<%= user._id%>">
+        <form method="post" action="/update/<%= user._id%>" enctype="multipart/form-data">
             <div class="form-group">
                 <label for=""><b>user name:</b></label>
                 <input type="text" name="name" value="<%= user.name%>" class="form-control">
@@ -20,6 +20,10 @@
             <div class="form-group">
                 <label for=""><b>user password:</b></label>
                 <input type="password" name="password" value="<%= user.password%>" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for=""><b>user image:</b></label>
+                <input type="file" name="image" >
             </div>
             <input type="submit" name="update" value="update" class="btn btn-success">
         </form>
