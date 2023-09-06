@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <form method="post" action="/create">
+        <form method="post" action="/article/create">
             <div class="form-group">
                 <label for=""><b>name:</b></label>
                 <input type="text" name="name" class="form-control">
@@ -16,6 +16,14 @@
             <div class="form-group">
                 <label for=""><b>description:</b></label>
                 <input type="text" name="description" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="author">Author:</label>
+                <select name="author" id="author" required>
+                <% users.forEach(function(user) { %>
+                    <option value="<%= user._id %>" ><%= user.name %></option>
+                <% }) %>
+                </select>
             </div>
             <input type="submit" name="add" value="add" class="btn btn-primary">
         </form>

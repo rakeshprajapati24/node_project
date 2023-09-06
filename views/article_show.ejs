@@ -7,20 +7,23 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
+    <h6><a href="/">Home</a></h6>
     <div class="container">
         <table class="table table-border table-bordered text-center shadow">
             <tr>
                 <td>id</td>
                 <td>name</td>
                 <td>description</td>
+                <td>User Name</td>
                 <td>user delete</td>
                 <td>user update</td>
             </tr>
-            <% arts.forEach(function(art){ %>
+            <% articles.forEach(function(art){ %>
             <tr>
                 <td><%=art._id%></td>
                 <td><%=art.name%></td>
                 <td><%=art.description%></td>
+                <td><%=art.author%></td>
                 <td><a href="/art_delete/<%=art._id%>" class="btn btn-danger">Delete</a></td>
                 <td><a href="/edit/<%=art._id%>" class="btn btn-success">edit</a></td>
             </tr>

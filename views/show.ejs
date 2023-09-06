@@ -8,6 +8,14 @@
 </head>
 <body>
     <h6><a href="/new">Add User</a></h6>
+    <h6><a href="/articles">Article</a></h6>
+    <h6></h6><a href="/download">Download Excel</a></h6>
+    <form action="/" method="get">
+        <input type="text" name="search" placeholder="Search users" value="<%= searchQuery %>">
+        <button type="submit">Search</button>
+        
+    </form>
+    <h6><a href="/" class="btn btn-success">Reset</a></h6>
     <div class="container">
         <table class="table table-border table-bordered text-center shadow">
             <tr>
@@ -28,9 +36,36 @@
                 <td><%=user.image%></td>
                 <td><a href="/delete/<%=user._id%>" class="btn btn-danger">Delete</a></td>
                 <td><a href="/edit/<%=user._id%>" class="btn btn-success">edit</a></td>
+                <td><a href="/show/<%=user._id%>" class="btn btn-success">Show</a></td>
             </tr>
             <% }) %>
         </table>
+        
     </div>
+    <ul class="pagination">
+        <% if (pageInfo.hasPrevPage) { %>
+          <li class="page-item">
+            <a class="page-link" href="?page=<%= pageInfo.prevPage %>&limit=<%= pageInfo.limit %>">Previous</a>
+          </li>
+        <% } %>
+      
+        <% const totalPages = pageInfo.totalPages; %>
+        <% const currentPage = pageInfo.page; %>
+        <% const visiblePages = 5; %>
+        <% const startPage = Math.max(1, currentPage - Math.floor(visiblePages / 2)); %>
+        <% const endPage = Math.min(totalPages, startPage + visiblePages - 1); %>
+      
+        <% for (let i = startPage; i <= endPage; i++) { %>
+          <li class="page-item <%= currentPage === i ? 'active' : '' %>">
+            <a class="page-link" href="?page=<%= i %>&limit=<%= pageInfo.limit %>"><%= i %></a>
+          </li>
+        <% } %>
+      
+        <% if (pageInfo.hasNextPage) { %>
+          <li class="page-item">
+            <a class="page-link" href="?page=<%= pageInfo.nextPage %>&limit=<%= pageInfo.limit %>">Next</a>
+          </li>
+        <% } %>
+    </ul>
 </body>
 </html>
